@@ -142,11 +142,90 @@ public class LogAnalyzer
             return busiest;
     }
     
-    /**
-     * Print the lines of data read by the LogfileReader
-     */
-    public void printData()
+    public void analyzeDailyData()
     {
-        reader.printData();
+        while(reader.hasNext())
+        {
+            LogEntry entry = reader.next();
+            int day = entry.getDay();
+            dailyCounts[day]++;
+        }
+    }
+    
+    public void analyzeMonthlyData()
+    {
+        while(reader.hasNext())
+        {
+            LogEntry entry = reader.next();
+            int month = entry.getMonth();
+            monthlyCounts[month]++;
+        }
+    }
+    
+    public int quietestDay()
+    {
+        int quietest = 1;
+        for(int i = 1; i < dailyCounts.length; i++)
+        {
+            if(dailyCounts[i] < dailyCounts[quietest])
+                quietest = i;
+        }
+        return quietest;
+    }
+    
+    public int busiestDay()
+    {
+        int busiest = 1;
+        for(int i = 1; i < dailyCounts.length; i++)
+        {
+            System.out.println(dailyCounts[i]);
+            if(dailyCounts[i] > dailyCounts[busiest])
+                busiest = i;
+        }
+        return busiest;
+    }
+    
+    public int avgAccessesPerMonth()
+    {
+        int numMonths = 0;
+        int totalAccesses = 0;
+        for(int i = 1; i <= 12; i++)
+        {
+            totalAccesses += monthlyCounts[i];
+            if(monthlyCounts[i] > 0)
+                numMonths++;
+        }
+        return totalAccesses/numMonths;
+    }
+    
+    public void totalAccessesPerMonth()
+    {
+         System.out.println("Month: Count");
+        for(int month = 1; month < monthlyCounts.length; month++)
+        {
+            System.out.println(month + ": " + monthlyCounts[month]);
+        }
+    }
+     
+    public int quietestMonth()
+    {
+        int quietest = 1;
+        for(int i = 1; i <= 12; i++)
+        {
+            if(monthlyCounts[i] < monthlyCounts[quietest])
+                quietest = i;
+        }
+        return quietest;
+    }
+    
+    public int busiestMonth()
+    {
+        int busiest = 1;
+        for(int i = 1; i <= 12; i++)
+        {
+            if(monthlyCounts[i] > monthlyCounts[busiest])
+                busiest = i;
+        }
+        return busiest;
     }
 }
