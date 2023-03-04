@@ -81,6 +81,21 @@ public class LogEntry implements Comparable<LogEntry>
         return dataValues[MINUTE];
     }
     
+    public int getDay()
+    {
+        return dataValues[DAY];
+    }
+    
+    public int getMonth()
+    {
+        return dataValues[MONTH];
+    }
+    
+    public int getYear()
+    {
+        return dataValues[YEAR];
+    }
+    
     /**
      * Create a string representation of the data.
      * This is not necessarily identical with the
@@ -90,9 +105,11 @@ public class LogEntry implements Comparable<LogEntry>
     public String toString()
     {
         StringBuffer buffer = new StringBuffer();
-        for(int value : dataValues) {
+        for(int value : dataValues) 
+        {
            // Prefix a leading zero on single digit numbers.
-            if(value < 10) {
+            if(value < 10) 
+            {
                 buffer.append('0');
             }
             buffer.append(value);

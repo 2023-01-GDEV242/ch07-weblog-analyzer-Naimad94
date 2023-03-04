@@ -32,7 +32,7 @@ public class LogfileReader implements Iterator<LogEntry>
     /**
      * Create a LogfileReader to supply data from a default file.
      */
-    public LogfileReader(String filename)
+    public LogfileReader()
     {
         this("weblog.txt");
     }
@@ -54,12 +54,14 @@ public class LogfileReader implements Iterator<LogEntry>
         try{
             // Locate the file with respect to the current environment.
             URL fileURL = getClass().getClassLoader().getResource(filename);
-            if(fileURL == null) {
+            if(fileURL == null) 
+            {
                 throw new FileNotFoundException(filename);
             }
             Scanner logfile = new Scanner(new File(fileURL.toURI()));
             // Read the data lines until the end of file.
-            while(logfile.hasNextLine()) {
+            while(logfile.hasNextLine()) 
+            {
                 String logline = logfile.nextLine();
                 // Break up the line and add it to the list of entries.
                 LogEntry entry = new LogEntry(logline);
