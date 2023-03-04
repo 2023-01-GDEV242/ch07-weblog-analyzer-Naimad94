@@ -110,6 +110,28 @@ public class LogAnalyzer
         return quietest;
     }
     
+    public int twoHourBusiest()
+    {
+            int numOfAccessesAtBusiest = 0;
+            int index = 0;
+            int busiest = 0;
+                        
+            while(index < hourCounts.length - 1)
+            {
+                if (numOfAccessesAtBusiest < hourCounts[index] + hourCounts[(index + 1)%24])
+                {
+                    busiest = index;
+                    numOfAccessesAtBusiest = hourCounts[index] + hourCounts[index + 1];
+                    index++;
+                }
+                else
+                {
+                    index++;
+                }
+            }
+            return busiest;
+    }
+    
     /**
      * Print the lines of data read by the LogfileReader
      */
