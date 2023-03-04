@@ -32,7 +32,7 @@ public class LogfileReader implements Iterator<LogEntry>
     /**
      * Create a LogfileReader to supply data from a default file.
      */
-    public LogfileReader()
+    public LogfileReader(String filename)
     {
         this("weblog.txt");
     }
