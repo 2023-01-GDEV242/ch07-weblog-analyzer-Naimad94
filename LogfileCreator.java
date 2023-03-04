@@ -29,21 +29,26 @@ public class LogfileCreator
     {
         boolean success = false;
         
-        if(numEntries > 0) {
-            try (FileWriter writer = new FileWriter(filename)) {
+        if(numEntries > 0) 
+        {
+            try (FileWriter writer = new FileWriter(filename)) 
+            {
                 LogEntry[] entries = new LogEntry[numEntries];
-                for(int i = 0; i < numEntries; i++) {
+                for(int i = 0; i < numEntries; i++) 
+                {
                     entries[i] = createEntry();
                 }
                 Arrays.sort(entries);
-                for(int i = 0; i < numEntries; i++) {
+                for(int i = 0; i < numEntries; i++) 
+                {
                     writer.write(entries[i].toString());
                     writer.write('\n');
                 }
                 
                 success = true;
             }
-            catch(IOException e) {
+            catch(IOException e) 
+            {
                 System.err.println("There was a problem writing to " + filename);
             }
                 

@@ -22,6 +22,12 @@ public class LogAnalyzer
         // Create the reader to obtain the data.
         reader = new LogfileReader("demo.log");
     }
+    
+    public LogAnalyzer(String filename)
+    {
+        // Create the reader to obtain the data.
+        reader = new LogfileReader(filename);
+    }
 
     /**
      * Analyze the hourly access data from the log file.
