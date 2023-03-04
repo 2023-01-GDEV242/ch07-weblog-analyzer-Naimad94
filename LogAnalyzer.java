@@ -141,7 +141,10 @@ public class LogAnalyzer
             }
             return busiest;
     }
-    
+    /**
+     * This part is not from me i had to look it up because i did not understand but i do understand what it does.
+     * I'm prob gonna look over this project again during spring break.
+     */
     public void analyzeDailyData()
     {
         while(reader.hasNext())
