@@ -1,8 +1,9 @@
 /**
  * Read web server data and analyse hourly access patterns.
  * 
- * @author David J. Barnes and Michael Kölling.
- * @version    2016.02.29
+ * Damian Nunez
+ * April 18, 2024
+ * 
  */
 public class LogAnalyzer
 {
@@ -141,6 +142,7 @@ public class LogAnalyzer
             }
             return busiest;
     }
+    
     /**
      * This part is not from me i had to look it up because i did not understand but i do understand what it does.
      * I'm prob gonna look over this project again during spring break.
@@ -227,7 +229,9 @@ public class LogAnalyzer
         for(int i = 1; i <= 12; i++)
         {
             if(monthlyCounts[i] > monthlyCounts[busiest])
+            {
                 busiest = i;
+            }
         }
         return busiest;
     }
